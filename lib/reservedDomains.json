@@ -1,0 +1,9 @@
+{
+    "domains":[
+        ".example",
+        ".invalid",
+        "example.com",
+        "example.net",
+        "example.org"
+    ]
+}

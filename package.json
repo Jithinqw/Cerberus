@@ -1,0 +1,29 @@
+{
+  "name": "cerberus",
+  "version": "0.0.1",
+  "description": "Common validations for nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jithinqw/Cerberus.git"
+  },
+  "keywords": [
+    "[\"validations\"",
+    "\"nodejs\"]"
+  ],
+  "author": "Jithin Zacharia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jithinqw/Cerberus/issues"
+  },
+  "homepage": "https://github.com/Jithinqw/Cerberus#readme",
+  "devDependencies": {
+    "mocha": "^6.1.4"
+  },
+  "engines": {
+    "node": ">= 0.10"
+  }
+}
