@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Jithinqw/Cerberus#readme",
   "devDependencies": {
+    "jsdoc": "^3.6.2",
     "mocha": "^6.1.4",
     "nyc": "^14.1.1"
   },

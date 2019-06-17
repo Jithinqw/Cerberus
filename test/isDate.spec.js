@@ -1,3 +1,5 @@
+//It is surely an art to name variable, and I am not good at it.
+
 const assert = require("assert");
 var isDate = require("../fns/isDate");
 
@@ -25,5 +27,4 @@ describe("Unit test for isDate function", ()=>{
         let validDate = isDate.isDate("Tell them, winter came for House Frey");
         assert.strictEqual(validDate, false);
     });
-
 })
