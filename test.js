@@ -1,2 +1,2 @@
-var ort = require("./fns/isDate");
-console.log(ort.isDate("sdfsdf"))
+var ort = require("./fns/isEmail");
+console.log(ort.isEmailValid("jithin@@gmail.com"))

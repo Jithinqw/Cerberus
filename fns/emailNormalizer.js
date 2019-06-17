@@ -1,4 +1,5 @@
 var normEmail = require("../lib/emailDomains.json");
+var emailValidation = require("./isEmail");
 
 /**
  * @exports normalizeEmail
@@ -7,12 +8,16 @@ var normEmail = require("../lib/emailDomains.json");
  * @param {String} domainName
  */
 exports.normalizeEmail = (email, domainName)=>{
-    var nameMatch = email.split("@");
-    for(let i=0; i<=normEmail[domainName].length; i++){
+    if(emailValidation.emailValidator(email) === false){
+        return false
+    }else{
+        var nameMatch = email.split("@");
+        for(let i=0; i<=normEmail[domainName].length; i++){
         if(nameMatch[1] == normEmail[domainName][i]){
             return true;
         }else{
             return false;
+        }
         }
     }
 }
@@ -24,6 +29,10 @@ exports.normalizeEmail = (email, domainName)=>{
  * @returns {String | null} 
  */
 exports.getUsername = (email)=> {
-    var name = email.split("@");
-    return name[0] ? name[0] : null;
+    if(emailValidation.emailValidator(email) === false){
+        return null;
+    }else{
+        var name = email.split("@");
+        return name[0] ? name[0] : null;
+    }
 }

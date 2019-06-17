@@ -16,6 +16,15 @@ var isUsernameValid = email=> {
 }
 
 /**
+ * @function validateEmail
+ * @param {*} email 
+ */
+var emailChecker = exports.emailValidator = email=>{
+    re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    return re.test(String(email).toLowerCase());
+}
+
+/**
  * @function restrictedDomainCheck
  * @param {*} email 
  * @returns {Boolean}
@@ -41,11 +50,13 @@ var restrictedDomainCheck = email=> {
  * @return {Boolean}
  */
 exports.isEmailValid = email=> {
-    if(isUsernameValid(email) === true){
-        if(restrictedDomainCheck(email) === true){
-            return false;
-        }else{
-            return true;
+    if(emailChecker(email) === true){
+        if(restrictedDomainCheck(email) === false){
+            if(isUsernameValid(email) === true){
+                return true
+            }
         }
+    }else{
+        return false;
     }
 }
