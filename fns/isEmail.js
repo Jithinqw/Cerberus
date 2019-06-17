@@ -21,14 +21,16 @@ var isUsernameValid = email=> {
  * @returns {Boolean}
  */
 var restrictedDomainCheck = email=> {
+    var result = true;
     domain = email.split("@");
-    for(let i=0; i<=restrictedDomains["domains"].length; i++){
-        if(restrictedDomains["domains"] === domain[1]){
-            return false;
+    for(let i=0; i <= restrictedDomains["domains"].length; i++){
+        if((restrictedDomains["domains"][i]) === domain[1]){
+            result = true;
         }else{
-            return true;
+            result = false;
         }
     }
+    return result;
 }
 
 /**
@@ -36,17 +38,14 @@ var restrictedDomainCheck = email=> {
  * @desc Checks if the email is valid accoriding to the default or options config.
  * Checking is done using spec defined in RFC 5321.
  * @param {String} email
- * @param {Object} oprtions
  * @return {Boolean}
  */
-exports.isEmailValid = (email)=> {
-    if(isUsernameValid(email)){
-        if(restrictedDomainCheck(email) === false){
-            return true;
-        }else{
+exports.isEmailValid = email=> {
+    if(isUsernameValid(email) === true){
+        if(restrictedDomainCheck(email) === true){
             return false;
+        }else{
+            return true;
         }
-    }else{
-        false;
     }
 }

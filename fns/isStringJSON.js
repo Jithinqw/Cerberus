@@ -11,7 +11,7 @@ exports.isStringJSON = (string)=> {
         }else{
             return false;
         }
-    }catch{
+    }catch(e){
         return false;
     }
 }
