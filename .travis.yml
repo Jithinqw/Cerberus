@@ -10,4 +10,4 @@ node_js:
 install:
   - npm i --save -g
 script:
-  -  mocha
+  -  npm test
