@@ -1,2 +1,3 @@
-var ort = require("./fns/ifscCode");
-console.log(ort.getBankCode("ADCB0000002"))
+var postalValid = require("./fns/isPostalCode");
+
+console.log(postalValid.isPostalCodeValid("90519","IN"));

@@ -2,9 +2,9 @@
 * @fileoverview finds if a string is a phone number or not.
 * @desc Follows The international public telecommunication numbering plan (IPTNP)
 * Please see https://en.wikipedia.org/wiki/E.164
+* regular expression taken from http://regexlib.com/Search.aspx?k=phone&AspxAutoDetectCookieSupport=1
 */
-var isString = require("../lib/isString");
-
+var assertString = require("../lib/isString");
 const phones = {
   'ar-AE': /^((\+?971)|0)?5[024568]\d{7}$/,
   'ar-DZ': /^(\+?213|0)(5|6|7)\d{8}$/,
@@ -80,10 +80,15 @@ const phones = {
   'zh-TW': /^(\+?886\-?|0)?9\d{8}$/,
 };
 
-exports.isPhoneNumber = (phoneNumber, country)=> {
-  if(isString.isString(phoneNumber) == false){
-    return false;
-  }else{
-    return true;
+/**
+ * @exports isPhoneNumber
+ * @param {String} phoneNumber
+ * @param {String} countryCode
+ * @returns {Boolean}
+ */
+exports.isPhoneNumber = (phoneNumber, countryCode)=> {
+  assertString.isString(phoneNumber);
+  if(countryCode in phones === true){
+    return phones[countryCode].test(phoneNumber);
   }
 }

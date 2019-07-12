@@ -8,8 +8,7 @@ describe("Unit test for isString function", ()=> {
         assert.strictEqual(isValid, true);
     });
 
-    it("The function should send false if the string is false", ()=>{
-        let isValid = isStringValid.isString(2333);
-        assert.strictEqual(isValid, false);
+    it("The function should throw new error", ()=>{
+        assert.throws(()=>isStringValid.isString(2333), Error);
     })
 })
