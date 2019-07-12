@@ -1,5 +1,6 @@
 var normEmail = require("../lib/emailDomains.json");
 var emailValidation = require("./isEmail");
+var assertString = require("../lib/isString");
 
 /**
  * @exports normalizeEmail
@@ -8,6 +9,7 @@ var emailValidation = require("./isEmail");
  * @param {String} domainName
  */
 exports.normalizeEmail = (email, domainName)=>{
+    assertString.isString(email);
     if(emailValidation.emailValidator(email) === false){
         return false
     }else{
@@ -29,6 +31,7 @@ exports.normalizeEmail = (email, domainName)=>{
  * @returns {String | null} 
  */
 exports.getUsername = (email)=> {
+    assertString.isString(email);
     if(emailValidation.emailValidator(email) === false){
         return null;
     }else{
