@@ -13,6 +13,10 @@ Unlike other validation packages the vision of this package is to reduce the num
 Cerebrus runs on bare `NodeJS(v6.0)` or later. Cerebrus tests configured to run on `Nodejs v6.0 - v12.0`.
 Check `travis CI` build for test runs.
 
+## Installation
+
+Install this package using `npm i cerberus-validator`.
+
 ## Testing
 
 Cereberus uses `assert` library from `NodeJS` and use `mocha` for test runners.

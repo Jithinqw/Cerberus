@@ -1,5 +1,5 @@
 {
-  "name": "cerberus",
+  "name": "cerberus-validator",
   "version": "0.0.3",
   "description": "Common validations for nodejs",
   "main": "index.js",
