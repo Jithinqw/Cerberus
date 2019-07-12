@@ -17,7 +17,7 @@ var IFSCodeValidator = exports.isIFSCode = code=> {
  * @param { String } code 
  * @returns {String}
  */
-exports.getBankCode = code=> {
+exports.getBankCode = (code)=> {
     assertString.isString(code);
     if(IFSCodeValidator(code) === true){
         return (code.substring(0,4))
@@ -31,7 +31,7 @@ exports.getBankCode = code=> {
  * @param { String } code 
  * @returns {String}
  */
-exports.getBranchCode = code=>{
+exports.getBranchCode = (code)=>{
     assertString.isString(code);
     if(IFSCodeValidator(code) === true){
         return (code.substring(5, 11))

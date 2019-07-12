@@ -5,6 +5,12 @@ const postalPattern = {
     US: /^\d{5}(-\d{4})?$/
 }
 
+/**
+ * @exports isPostalCodeValid
+ * @param {String} postalCode
+ * @param {String} countryCode
+ * @returns {Boolean}
+ */
 exports.isPostalCodeValid = (postalCode, countryCode)=>{
     assertString.isString(postalCode);
     if (countryCode.toUpperCase() in postalPattern === true){
