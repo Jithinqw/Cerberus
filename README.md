@@ -21,7 +21,18 @@ For running tests install `mocha` by using `npm i mocha -g` and run `mocha` from
 
 ## TODO
 
-- [x] Write Browerify Config
-- [x] Move all the validations from Nodejs to browser.
-- [x] Generate `.min` file.
-- [x] Move to `Promise` based library.
+- [ ] Move all the validations from Nodejs to browser.
+- [ ] Generate `.min` file.
+- [ ] Move to `Promise` based library.
+
+## Using it on your browser
+
+You can use `cerberus` in your browser by simply importing it.
+
+```javascript
+    <script src="build/index.js"></script>
+```
+
+## Examples
+
+View examples in `example.md`
