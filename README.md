@@ -25,7 +25,6 @@ For running tests install `mocha` by using `npm i mocha -g` and run `mocha` from
 
 ## TODO
 
-- [ ] Move all the validations from Nodejs to browser.
 - [ ] Generate `.min` file.
 - [ ] Move to `Promise` based library.
 
