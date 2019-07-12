@@ -1,6 +1,6 @@
 {
   "name": "cerberus",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Common validations for nodejs",
   "main": "index.js",
   "scripts": {
