@@ -4,6 +4,7 @@
 * Please see https://en.wikipedia.org/wiki/E.164
 * regular expression taken from http://regexlib.com/Search.aspx?k=phone&AspxAutoDetectCookieSupport=1
 */
+
 var assertString = require("../lib/isString");
 const phones = {
   'ar-AE': /^((\+?971)|0)?5[024568]\d{7}$/,

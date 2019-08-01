@@ -1,5 +1,6 @@
 var assertString = require("../lib/isString");
 var luhnCheck = require("../lib/luhnCheck");
+
 /**
  * @exports isCreditCardNumber
  * @desc Checks if the credit card number is valid or not.

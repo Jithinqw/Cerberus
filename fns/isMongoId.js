@@ -1,5 +1,6 @@
 var convertToHexa = require("../lib/isHexaDecimal");
 var assertString = require("../lib/isString");
+
 /**
  * @exports isMongoId
  * @param {String} id

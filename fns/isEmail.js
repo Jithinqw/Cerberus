@@ -1,6 +1,7 @@
 var splitUsername = require("../fns/emailNormalizer");
 var restrictedDomains = require("../lib/reservedDomains.json");
 var assertString = require("../lib/isString");
+
 /**
  * @function isUsernameValid
  * @param {*} email 
