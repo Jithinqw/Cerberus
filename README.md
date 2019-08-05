@@ -2,7 +2,9 @@
 
 [![Build Status](https://travis-ci.com/Jithinqw/Cerberus.svg?token=WuVynuX3ULHwMq3Ky4qo&branch=dev)](https://travis-ci.com/Jithinqw/Cerberus)
 ![npm](https://img.shields.io/npm/dw/cerberus-validator)
-Validations made easy
+![GitHub](https://img.shields.io/github/license/Jithinqw/cerberus)
+
+Desi Javascript utils and validations made easy.
 
 ## Vision
 
