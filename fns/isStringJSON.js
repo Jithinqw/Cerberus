@@ -1,4 +1,5 @@
 var assertString = require("../lib/isString");
+
 /**
  * @exports isStringJSON
  * @desc checks if the string is a JSON or not.

@@ -1,6 +1,7 @@
 var splitUsername = require("../fns/emailNormalizer");
 var restrictedDomains = require("../lib/reservedDomains.json");
 var assertString = require("../lib/isString");
+
 /**
  * @function isUsernameValid
  * @param {*} email 
@@ -34,7 +35,7 @@ var emailChecker = exports.emailValidator = email=>{
 var restrictedDomainCheck = email=> {
     assertString.isString(email);
     var result = true;
-    domain = email.split("@");
+    let domain = email.split("@");
     for(let i=0; i <= restrictedDomains["domains"].length; i++){
         if((restrictedDomains["domains"][i]) === domain[1]){
             result = true;

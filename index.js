@@ -17,7 +17,7 @@ var bankCode = require("./fns/ifscCode");
 
 const version = "0.0.3";
 
-exports.cerebreus = {
+const cerebreus={
     isEmailValid: isEmail.isEmailValid,
     getCardProvider: creditCard.detectCardType,
     isCardValid: creditCard.isCreditCardNumber,
@@ -33,4 +33,6 @@ exports.cerebreus = {
     isIFSCValid: bankCode.isIFSCode,
     getBankCode: bankCode.getBankCode,
     getBranchCode: bankCode.getBranchCode
-}
+};
+
+module.exports = cerebreus;

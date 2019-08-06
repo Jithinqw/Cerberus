@@ -1,4 +1,5 @@
 var assertString = require("../lib/isString");
+
 /**
  * @exports isJWT
  * @param {String} str
