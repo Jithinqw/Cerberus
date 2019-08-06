@@ -41,4 +41,4 @@ You can use `cerberus` in your browser by simply importing it.
 
 ## Examples
 
-View examples in `example.md`
+View examples in [example.md](https://github.com/Jithinqw/Cerberus/blob/master/example.md)
