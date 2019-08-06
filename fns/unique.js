@@ -3,16 +3,14 @@ var assertIter = require("../lib/typeChecker");
 /**
  * @exports unique
  * @desc returns unique iterable on passing an iterable
+ * inspired from lodash lib.
  * @param {Object}
  * @returns {Object}
  */
-exprots.unique = iter=>{
+exports.unique = iter=>{
     assertIter.isIterable(iter);
-    let uniqueiter = [];
-    for(let i=0;i<iter.length;i++){
-        if(iter.indexOf(iter[i] === -1)){
-            uniqueiter.push(iter[i]);
-        }
-    }
-    return uniqueiter;
+    var filerArry = iter.filter((item, pos)=>{
+        return iter.indexOf(item) == pos;
+    })
+    return filerArry;
 }

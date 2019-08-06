@@ -5,7 +5,6 @@ var assertFunction = require("../lib/typeChecker");
  * @returns {Number}
  */
 exports.mesurePerformance = (callback, ...params)=>{
-    assertFunction.isFunction(fn);
     let startTime = Date.now();
     callback(...params);
     let endTime = Date.now();
