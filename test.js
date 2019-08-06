@@ -14,11 +14,14 @@
 // console.log(cer.cerebreus.isCVVValid("322"));
 // console.log(cer.cerebreus.getCardProvider("5241933380249003"));
 // console.log(cer.cerebreus.isIFSCValid("UTIB0003375"))
-var demo = require("./fns/unique");
-var demo1 = require("./fns/performanceMesure");
-//console.log(demo.unique([3,4,5,5,5,54,4,4,4,4,4]))
-function printMyName(name){
-    console.log(name)
-}
+// var demo = require("./fns/unique");
+// var demo1 = require("./fns/performanceMesure");
+// //console.log(demo.unique([3,4,5,5,5,54,4,4,4,4,4]))
+// function printMyName(name){
+//     console.log(name)
+// }
 
-console.log(typeof demo1.mesurePerformance(printMyName,"Jithin"))
+// console.log(typeof demo1.mesurePerformance(printMyName,"Jithin"))
+
+var cerebreus = require("./index")
+console.log(cerebreus.getBankCode("ADCB0000002"))
