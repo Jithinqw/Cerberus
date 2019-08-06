@@ -11,8 +11,8 @@
     "url": "git+https://github.com/Jithinqw/Cerberus.git"
   },
   "keywords": [
-    "[\"validations\"",
-    "\"nodejs\"]"
+    "validations",
+    "Nodejs"
   ],
   "author": "Jithin Zacharia",
   "license": "GNU GENERAL PUBLIC LICENSE",
@@ -21,11 +21,13 @@
   },
   "homepage": "https://github.com/Jithinqw/Cerberus#readme",
   "devDependencies": {
-    "jsdoc": "^3.6.2",
+    "benchmark": "^2.1.4",
+    "jsdoc": "^3.6.3",
     "mocha": "^6.1.4",
     "nyc": "^14.1.1"
   },
   "engines": {
     "node": ">= 0.10"
-  }
+  },
+  "dependencies": {}
 }
