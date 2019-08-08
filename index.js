@@ -14,6 +14,10 @@ var phoneNumberValidator = require("./fns/isPhoneNumber");
 var postalCodeValidator = require("./fns/isPostalCode");
 var jsonValidator = require("./fns/isStringJSON");
 var bankCode = require("./fns/ifscCode");
+var luhnCheck = require("./lib/luhnCheck");
+var PANCardValidator = require("./fns/isPANCard");
+var performanceMesure = require("./fns/performanceMesure");
+var unique = require("./fns/unique");
 
 const version = "0.0.3";
 
@@ -24,6 +28,10 @@ const cerebreus={
     isCVVValid: cvvNumber.CVVValidator,
     isJWTValid: JWTValidator.isJWT,
     isDate: isDate.isDate,
+    luhnCheck: luhnCheck.luhnCheck,
+    panCardValidaror: PANCardValidator.isPanCard,
+    getUnique: unique.unique,
+    performanceMesure: performanceMesure.mesurePerformance,
     isMongoId: mongoValidator.isMongoId,
     isPhoneNumberValid: phoneNumberValidator.isPhoneNumber,
     isPostalCodeValid: postalCodeValidator.isPostalCodeValid,
