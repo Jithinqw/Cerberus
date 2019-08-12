@@ -19,6 +19,7 @@ exports.isCreditCardNumber = creditCardNumber=> {
  */
 exports.detectCardType = cardNumber =>{
     assertString.isString(cardNumber);
+    if(luhnCheck.luhnCheck(cardNumber) == true){
         var re = {
             electron: /^(4026|417500|4405|4508|4844|4913|4917)\d+$/,
             maestro: /^(5018|5020|5038|5612|5893|6304|6759|6761|6762|6763|0604|6390)\d+$/,
@@ -38,4 +39,7 @@ exports.detectCardType = cardNumber =>{
                 return key
             }
         }
+    }else{
+        return "Invalid card"
+    }
 }

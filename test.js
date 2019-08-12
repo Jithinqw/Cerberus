@@ -24,4 +24,4 @@
 // console.log(typeof demo1.mesurePerformance(printMyName,"Jithin"))
 
 var cerebreus = require("./index")
-console.log(cerebreus.getBankCode("ADCB0000002"))
+console.log(cerebreus.getCardProvider("sdfsdfsdfsdf"))
