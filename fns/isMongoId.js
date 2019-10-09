@@ -7,6 +7,6 @@ var assertString = require('../lib/isString')
  * @returns {Boolean}
  */
 exports.isMongoId = id => {
-    assertString.isString(id)
+    assertString.isString(id);
     return convertToHexa.isHexaDecimal(id) && id.length === 24
 }

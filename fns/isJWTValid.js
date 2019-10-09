@@ -6,7 +6,7 @@ var assertString = require('../lib/isString')
  * @returns {Boolean}
  */
 exports.isJWT = str => {
-    assertString.isString(str)
+    assertString.isString(str);
     const jwt = /^([A-Za-z0-9\-_~+\/]+[=]{0,2})\.([A-Za-z0-9\-_~+\/]+[=]{0,2})(?:\.([A-Za-z0-9\-_~+\/]+[=]{0,2}))?$/
-    return jwt.test(str)
+    return jwt.test(str);
 }

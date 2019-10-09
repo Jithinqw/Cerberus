@@ -38,12 +38,12 @@ var restrictedDomainCheck = email => {
     let domain = email.split('@')
     for (let i = 0; i <= restrictedDomains['domains'].length; i++) {
         if (restrictedDomains['domains'][i] === domain[1]) {
-            result = true
+            result = true;
         } else {
-            result = false
+            result = false;
         }
     }
-    return result
+    return result;
 }
 
 /**
@@ -58,10 +58,10 @@ exports.isEmailValid = email => {
     if (emailChecker(email) === true) {
         if (restrictedDomainCheck(email) === false) {
             if (isUsernameValid(email) === true) {
-                return true
+                return true;
             }
         }
     } else {
-        return false
+        return false;
     }
 }
