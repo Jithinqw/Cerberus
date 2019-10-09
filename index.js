@@ -19,7 +19,8 @@ var PANCardValidator = require("./fns/isPANCard");
 var performanceMesure = require("./fns/performanceMesure");
 var unique = require("./fns/unique");
 
-const version = "0.0.3";
+const version = "0.5.0";
+const author = "Jithin Zacharia";
 
 const cerebreus={
     isEmailValid: isEmail.isEmailValid,
@@ -43,4 +44,12 @@ const cerebreus={
     getBranchCode: bankCode.getBranchCode
 };
 
-module.exports = cerebreus;
+const about = {
+    version: version,
+    author: author
+};
+
+module.exports = {
+    cerebreus,
+    about
+};

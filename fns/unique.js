@@ -1,4 +1,4 @@
-var assertIter = require("../lib/typeChecker");
+var assertIter = require('../lib/typeChecker')
 
 /**
  * @exports unique
@@ -7,10 +7,10 @@ var assertIter = require("../lib/typeChecker");
  * @param {Object}
  * @returns {Object}
  */
-exports.unique = iter=>{
-    assertIter.isIterable(iter);
-    var filerArry = iter.filter((item, pos)=>{
-        return iter.indexOf(item) == pos;
+exports.unique = iter => {
+    assertIter.isIterable(iter)
+    var filerArry = iter.filter((item, pos) => {
+        return iter.indexOf(item) == pos
     })
-    return filerArry;
+    return filerArry
 }

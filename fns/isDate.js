@@ -5,11 +5,11 @@
  * @param {String} dateValue
  * @returns {Boolean}
  */
-exports.isDate = dateValue=> {
-    let validateDate = Date.parse(new Date(dateValue));
-    if(isNaN(validateDate)){
-        return false;
-    }else{
-        return true;
+exports.isDate = dateValue => {
+    let validateDate = Date.parse(new Date(dateValue))
+    if (isNaN(validateDate)) {
+        return false
+    } else {
+        return true
     }
 }

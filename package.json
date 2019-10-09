@@ -1,6 +1,6 @@
 {
   "name": "cerberus-validator",
-  "version": "0.2.5",
+  "version": "0.5.0",
   "description": "Common validations for nodejs",
   "main": "index.js",
   "scripts": {
@@ -23,8 +23,9 @@
   "devDependencies": {
     "benchmark": "^2.1.4",
     "jsdoc": "^3.6.3",
-    "mocha": "^6.1.4",
-    "nyc": "^14.1.1"
+    "mocha": "^6.2.1",
+    "nyc": "^14.1.1",
+    "prettier": "1.18.2"
   },
   "engines": {
     "node": ">= 0.10"
