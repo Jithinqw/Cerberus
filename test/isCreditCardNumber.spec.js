@@ -27,8 +27,14 @@ describe('Unit test for find the payment gateway for credit card', () => {
 
     it('The function should return masaterCard on valid credit card', () => {
         let validCreditCard = creditCardValidator.detectCardType(
-            '4419333830249003'
+            '4111111111111111'
         )
         assert.strictEqual(validCreditCard, 'visa')
+    })
+    it('The function should return Diners Club on valid credit card', () => {
+        let validCreditCard = creditCardValidator.detectCardType(
+            '30569309025904'
+        )
+        assert.strictEqual(validCreditCard, 'dinersclub')
     })
 })

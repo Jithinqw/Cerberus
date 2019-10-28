@@ -16,8 +16,9 @@ var jsonValidator = require("./fns/isStringJSON");
 var bankCode = require("./fns/ifscCode");
 var luhnCheck = require("./lib/luhnCheck");
 var PANCardValidator = require("./fns/isPANCard");
-var performanceMesure = require("./fns/performanceMesure");
 var unique = require("./fns/unique");
+var validateEtherHash = require('./fns/isEthereumHash');
+var isValidPort = require('./fns/isValidPort');
 
 const version = "0.5.0";
 const author = "Jithin Zacharia";
@@ -32,14 +33,15 @@ const cerebreus={
     luhnCheck: luhnCheck.luhnCheck,
     panCardValidaror: PANCardValidator.isPanCard,
     getUnique: unique.unique,
-    performanceMesure: performanceMesure.mesurePerformance,
     isMongoId: mongoValidator.isMongoId,
     isPhoneNumberValid: phoneNumberValidator.isPhoneNumber,
     isPostalCodeValid: postalCodeValidator.isPostalCodeValid,
     isStringJSON: jsonValidator.isStringJSON,
     getUserEmailUserName: emailNormalizer.getUsername,
     normalizeEmail: emailNormalizer.normalizeEmail,
+    isEthereumHash: validateEtherHash.isEthereumHash,
     isIFSCValid: bankCode.isIFSCode,
+    isValidPort: isValidPort.isValidPort,
     getBankCode: bankCode.getBankCode,
     getBranchCode: bankCode.getBranchCode
 };
