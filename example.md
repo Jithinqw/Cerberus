@@ -15,7 +15,8 @@
 
 ```javascript
     var cerebreus = require("cerebreus-validator");
-    cerebreus.isEmailValid("jithin.zacharia@gmail.com")
+    cerebreus.isEmailValid("jithin.zacharia@gmail.com") // =>true
+    cerebreus.isEmailValid("Go...Get to the chopper!!") // =>false
 ```
 
 ## Date
@@ -24,8 +25,8 @@
 
 ```javascript
     var cerebreus = require("cerebreus-validator");
-    cerebreus.isDate("1995-12-17T03:24:00")
-    cerebreus.isDate("December 17, 1995 03:24:00")
+    cerebreus.isDate("1995-12-17T03:24:00") // =>true
+    cerebreus.isDate("December 17, 1995 03:24:00") // =>true
 ```
 
 ## String
@@ -33,7 +34,8 @@
 `isStringJSON` returns a `bool` value.
 ```javascript
     var cerebreus = require("cerebreus-validator");
-    cerebreus.isStringJSON("{}");
+    cerebreus.isStringJSON("{}"); // =>true
+    cerebreus.isStringJSON("I am batman"); // =>false
 ```
 
 ## Mongo
@@ -42,7 +44,8 @@
 
 ```javascript
     var cerebreus = require("cerebreus-validator");
-    cerebreus.isMongoId("4d3ed089fb60ab534684b7e0");
+    cerebreus.isMongoId("4d3ed089fb60ab534684b7e0"); // => true
+    cerebreus.isMongoId("madness is like gravity..."); // => false
 ```
 
 ## JWT
@@ -50,7 +53,9 @@
 `isJWTValid` returns `bool` value.
 ```javascript
     var cerebreus = require("cerebreus-validator");
-    cerebreus.isJWTValid("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"));
+    cerebreus.isJWTValid("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c")); // => true
+
+    cerebreus.isJWTValid("It's not our abilities that show what we truly are... it is our choices.")); // => false
 ```
 
 ## Bank
@@ -59,28 +64,53 @@
 
 ```javascript
     var cerebreus = require("cerebreus-validator");
-    cerebreus.CVVValidator("344");
+    cerebreus.isCVVValid("344"); // => true
+    cerebreus.isCVVValid("34"); // => false
 ```
 
 `isCreditCardNumber` returns a `bool` value.
 
 ```javascript
     var cerebreus = require("cerebreus-validator");
-    cerebreus.isCreditCardNumber("5241933380249003");
+    cerebreus.isCardValid("5241933380249003"); // => true
+    cerebreus.isCardValid("Everything is KungFu!"); // => false
 ```
 
-`isIFSCValid` returns `bool` value. This only works with Indian Banks
+`luhnCheck` returns a `bool` value. This API is based on Luhn's Algorithm
 
 ```javascript
     var cerebreus = require("cerebreus-validator");
-    cerebreus.isIFSCValid("UTIB0003375");
+    cerebreus.luhnCheck("5241933380249003"); // => true
+    cerebreus.luhnCheck("Everything is KungFu!"); // => false
+```
+
+`getCardProvider` returns a `string` value on passing card number.
+
+```javascript
+    var cerebreus = require("cerebreus-validator");
+    cerebreus.getCardProvider("5241933380249003"); // => true
+    cerebreus.getCardProvider("Everything is KungFu!"); // => false
+```
+
+`panCardValidator` returns a `bool` if PAN card is valid. This is a strict Indian featue. [What this?](https://www.incometaxindia.gov.in/Pages/tax-services/apply-for-pan.aspx)
+
+```javascript
+    var cerebreus = require("cerebreus-validator");
+    cerebreus.panCardValidator("ABCDS1234Y"); // => true
+    cerebreus.panCardValidator("Say “hello” to my little friend!"); // => false
 ```
 
 ## Postal Code
 
 `isPostalCodeValid` returns `bool` value. 
 
+Pass any of the below options 
+
+[ 'AD', 'AT', 'AU', 'BE', 'BG', 'BR', 'CA', 'CH', 'CZ', 'DE', 'DK', 'DZ', 'EE', 'ES', 'FI', 'FR', 'GB', 'GR', 'HR', 'HU', 'ID', 'IE' 'IL', 'IN', 'IS', 'IT', 'JP', 'KE', 'LI', 'LT', 'LU', 'LV', 'MT', 'MX', 'NL', 'NO', 'NZ', 'PL', 'PR', 'PT', 'RO', 'RU', 'SA', 'SE', 'SI', 'TN', 'TW', 'UA', 'US', 'ZA', 'ZM' ]
+
+
 ```javascript
     var cerebreus = require("cerebreus-validator");
-    cerebreus.isPostalCodeValid("690519", "IN");
+    cerebreus.isPostalCodeValid("690519", "IN"); // => true
+    cerebreus.isPostalCodeValid("If you want something, go get it Period.", "US"); // => false
 ```

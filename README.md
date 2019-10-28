@@ -28,7 +28,6 @@ For running tests install `mocha` by using `npm i mocha -g` and run `mocha` from
 
 ## TODO
 
-- [ ] Generate `.min` file.
 - [ ] Move to `Promise` based library.
 
 ## Using it on your browser
@@ -36,7 +35,7 @@ For running tests install `mocha` by using `npm i mocha -g` and run `mocha` from
 You can use `cerberus` in your browser by simply importing it.
 
 ```javascript
-    <script src="build/index.js"></script>
+    <script src="bundle/main.js"></script>
 ```
 
 ## Examples

@@ -31,7 +31,7 @@ const cerebreus={
     isJWTValid: JWTValidator.isJWT,
     isDate: isDate.isDate,
     luhnCheck: luhnCheck.luhnCheck,
-    panCardValidaror: PANCardValidator.isPanCard,
+    panCardValidator: PANCardValidator.isPanCard,
     getUnique: unique.unique,
     isMongoId: mongoValidator.isMongoId,
     isPhoneNumberValid: phoneNumberValidator.isPhoneNumber,
