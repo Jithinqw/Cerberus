@@ -1,6 +1,6 @@
 {
   "name": "cerberus-validator",
-  "version": "0.5.0",
+  "version": "0.7.0",
   "description": "Common validations for nodejs",
   "main": "index.js",
   "scripts": {

@@ -8,10 +8,12 @@
 * [Postal Code](#PostalCode)
 * [Bank](#Bank)
 * [String](#String)
+* [Network](#Network)
+* [Blockchain](#Blockchain)
 
 ## Email
 
-`isEmailValid` returns a `bool` value. 
+`isEmailValid` returns a `bool` value.
 
 ```javascript
     var cerebreus = require("cerebreus-validator");
@@ -88,11 +90,11 @@
 
 ```javascript
     var cerebreus = require("cerebreus-validator");
-    cerebreus.getCardProvider("5241933380249003"); // => true
+    cerebreus.getCardProvider("5241933380249003"); // => MasterCard
     cerebreus.getCardProvider("Everything is KungFu!"); // => false
 ```
 
-`panCardValidator` returns a `bool` if PAN card is valid. This is a strict Indian featue. [What this?](https://www.incometaxindia.gov.in/Pages/tax-services/apply-for-pan.aspx)
+`panCardValidator` returns a `bool` if PAN card is valid. This is only available for India. [What this?](https://www.incometaxindia.gov.in/Pages/tax-services/apply-for-pan.aspx)
 
 ```javascript
     var cerebreus = require("cerebreus-validator");
@@ -102,15 +104,34 @@
 
 ## Postal Code
 
-`isPostalCodeValid` returns `bool` value. 
+`isPostalCodeValid` returns `bool` value.
 
-Pass any of the below options 
+Pass any of the below options
 
-[ 'AD', 'AT', 'AU', 'BE', 'BG', 'BR', 'CA', 'CH', 'CZ', 'DE', 'DK', 'DZ', 'EE', 'ES', 'FI', 'FR', 'GB', 'GR', 'HR', 'HU', 'ID', 'IE' 'IL', 'IN', 'IS', 'IT', 'JP', 'KE', 'LI', 'LT', 'LU', 'LV', 'MT', 'MX', 'NL', 'NO', 'NZ', 'PL', 'PR', 'PT', 'RO', 'RU', 'SA', 'SE', 'SI', 'TN', 'TW', 'UA', 'US', 'ZA', 'ZM' ]
+`[ 'AD', 'AT', 'AU', 'BE', 'BG', 'BR', 'CA', 'CH', 'CZ', 'DE', 'DK', 'DZ', 'EE', 'ES', 'FI', 'FR', 'GB', 'GR', 'HR', 'HU', 'ID', 'IE' 'IL', 'IN', 'IS', 'IT', 'JP', 'KE', 'LI', 'LT', 'LU', 'LV', 'MT', 'MX', 'NL', 'NO', 'NZ', 'PL', 'PR', 'PT', 'RO', 'RU', 'SA', 'SE', 'SI', 'TN', 'TW', 'UA', 'US', 'ZA', 'ZM' ]`
 
 
 ```javascript
     var cerebreus = require("cerebreus-validator");
     cerebreus.isPostalCodeValid("690519", "IN"); // => true
     cerebreus.isPostalCodeValid("If you want something, go get it Period.", "US"); // => false
+```
+
+## Network
+
+`isValidPort` returns `bool` value.
+```javascript
+    var cerebreus = require("cerebreus-validator");
+    cerebreus.isValidPort("3000"); // => true
+    cerebreus.isValidPort("3000000"); // => false
+```
+
+## Blockchain
+
+`isEthereumHash` returns `bool` value.
+
+```javascript
+    var cerebreus = require("cerebreus-validator");
+    cerebreus.isEthereumHash("0x0284286bc53e3170ebf91ef7c912e7af969758399ab263e7a8eda148d64f586b"); // => true
+    cerebreus.isEthereumHash("THis is a transcation hash"); // => false
 ```

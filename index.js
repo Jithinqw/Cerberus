@@ -20,7 +20,7 @@ var unique = require("./fns/unique");
 var validateEtherHash = require('./fns/isEthereumHash');
 var isValidPort = require('./fns/isValidPort');
 
-const version = "0.5.0";
+const version = "0.7.0";
 const author = "Jithin Zacharia";
 
 const cerebreus={
