@@ -83,9 +83,9 @@ const phones = {
 
 /**
  * @exports isPhoneNumber
- * @param {String} phoneNumber
- * @param {String} countryCode
- * @returns {Boolean}
+ * @param {string} phoneNumber
+ * @param {string} countryCode
+ * @returns {boolean}
  */
 exports.isPhoneNumber = (phoneNumber, countryCode) => {
     assertString.isString(phoneNumber)

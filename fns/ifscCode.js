@@ -2,8 +2,8 @@ var assertString = require('../lib/isString')
 
 /**
  * @exports isIFSCode
- * @param {String} code
- * @returns {Boolean}
+ * @param {string} code
+ * @returns {boolean}
  */
 var IFSCodeValidator = (exports.isIFSCode = code => {
     assertString.isString(code)
@@ -13,8 +13,8 @@ var IFSCodeValidator = (exports.isIFSCode = code => {
 
 /**
  * @exports getBankCode
- * @param { String } code
- * @returns {String}
+ * @param {string } code
+ * @returns {string}
  */
 exports.getBankCode = code => {
     assertString.isString(code)
@@ -27,8 +27,8 @@ exports.getBankCode = code => {
 
 /**
  * @exports getBranchCode
- * @param { String } code
- * @returns {String}
+ * @param { string } code
+ * @returns {string}
  */
 exports.getBranchCode = code => {
     assertString.isString(code)

@@ -2,8 +2,8 @@ var assertString = require('../lib/isString')
 
 /**
  * @exports reverseString
- * @param {String} param
- * @returns {String}
+ * @param {string} param
+ * @returns {string}
  */
 exports.reverseString = param => {
     assertString.isString(param)

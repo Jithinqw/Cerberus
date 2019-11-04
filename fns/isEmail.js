@@ -5,7 +5,7 @@ var assertString = require('../lib/isString')
 /**
  * @function isUsernameValid
  * @param {string} email
- * @returns {Boolean}
+ * @returns {boolean}
  */
 var isUsernameValid = email => {
     assertString.isString(email)
@@ -19,7 +19,8 @@ var isUsernameValid = email => {
 
 /**
  * @function validateEmail
- * @param {*} email
+ * @param {string} email
+ * @returns {boolean}
  */
 var emailChecker = (exports.emailValidator = email => {
     assertString.isString(email)
@@ -30,7 +31,7 @@ var emailChecker = (exports.emailValidator = email => {
 /**
  * @function restrictedDomainCheck
  * @param {*} email
- * @returns {Boolean}
+ * @returns {boolean}
  */
 var restrictedDomainCheck = email => {
     assertString.isString(email)
@@ -50,8 +51,8 @@ var restrictedDomainCheck = email => {
  * @exports isEmailValid
  * @desc Checks if the email is valid accoriding to the default or options config.
  * Checking is done using spec defined in RFC 5321.
- * @param {String} email
- * @return {Boolean}
+ * @param {string} email
+ * @return {boolean}
  */
 exports.isEmailValid = email => {
     assertString.isString(email)

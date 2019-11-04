@@ -2,11 +2,11 @@ var assertString = require('../lib/isString')
 
 /**
  * @exports isPanCard
- * @param {String} panNumber
- * @returns {Boolean}
+ * @param {string} panNumber
+ * @returns {boolean}
  */
 exports.isPanCard = panNumber => {
     assertString.isString(panNumber)
-    let regExPan = /^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/
-    return regExPan.test(panNumber)
+    const PAN_REG = /^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/
+    return PAN_REG.test(panNumber)
 }

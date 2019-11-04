@@ -3,8 +3,8 @@ var assertString = require('../lib/isString')
 /**
  * @exports isStringJSON
  * @desc checks if the string is a JSON or not.
- * @param {String} string
- * @returns {Boolean}
+ * @param {string} string
+ * @returns {boolean}
  */
 exports.isStringJSON = string => {
     assertString.isString(string)

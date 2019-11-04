@@ -3,8 +3,8 @@ var assertString = require('../lib/isString')
 
 /**
  * @exports isMongoId
- * @param {String} id
- * @returns {Boolean}
+ * @param {string} id
+ * @returns {boolean}
  */
 exports.isMongoId = id => {
     assertString.isString(id);

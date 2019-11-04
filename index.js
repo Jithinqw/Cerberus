@@ -24,6 +24,8 @@ var isIPAddress = require('./fns/isIPAddress');
 var isDivisible = require('./fns/isDivisible');
 var isBase64 = require('./fns/isBase64');
 var colorValidator = require('./fns/colorValidator');
+var isVehiclePlateValid = require('./fns/isVehicleNumber');
+
 const VERSION = "0.7.0";
 const AUTHOR = "Jithin Zacharia";
 
@@ -52,6 +54,7 @@ const cerebreus={
     isIPAddress: isIPAddress,
     isDivisible: isDivisible,
     isBase64: isBase64,
+    isVehiclePlateValid: isVehiclePlateValid,
     colorValidator: colorValidator,
     version: VERSION,
     author: AUTHOR

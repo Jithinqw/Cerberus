@@ -3,8 +3,8 @@ var assertString = require('../lib/isString')
 /**
  * @exports validate CVV number
  * @desc validate cvv number for cards.
- * @param {String} cvvNumber
- * @returns {Boolean}
+ * @param {string} cvvNumber
+ * @returns {boolean}
  * @todo Find other ways to validate a CVV number.This method is not good.
  */
 exports.CVVValidator = cvvNumber => {

@@ -4,8 +4,8 @@ var luhnCheck = require('../lib/luhnCheck')
 /**
  * @exports isCreditCardNumber
  * @desc Checks if the credit card number is valid or not.
- * @param { String } creditCardNumber
- * @return { Boolean }
+ * @param { string } creditCardNumber
+ * @return { boolean }
  */
 exports.isCreditCardNumber = creditCardNumber => {
     return luhnCheck.luhnCheck(creditCardNumber)
@@ -14,8 +14,8 @@ exports.isCreditCardNumber = creditCardNumber => {
 /**
  * @exports detectCardType
  * @desc detects card type
- * @param { String } cardNumber
- * @returns { String }
+ * @param { string } cardNumber
+ * @returns {string }
  */
 exports.detectCardType = cardNumber => {
     assertString.isString(cardNumber)

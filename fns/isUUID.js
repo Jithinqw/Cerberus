@@ -10,7 +10,7 @@ const uuid = {
 /**
  * @function isUsernameValid
  * @param {string} email
- * @returns {Boolean}
+ * @returns {boolean}
 */
 exports.isUUID = (str, version = 'all') =>{
   assertString.isString(str);

@@ -5,8 +5,8 @@ var assertString = require('../lib/isString')
 /**
  * @exports normalizeEmail
  * @desc Checks if the email is belonging to a particular domain or not.
- * @param {String} email
- * @param {String} domainName
+ * @param {string} email
+ * @param {string} domainName
  */
 exports.normalizeEmail = (email, domainName) => {
     assertString.isString(email)
