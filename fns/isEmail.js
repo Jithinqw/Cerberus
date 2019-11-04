@@ -4,7 +4,7 @@ var assertString = require('../lib/isString')
 
 /**
  * @function isUsernameValid
- * @param {*} email
+ * @param {string} email
  * @returns {Boolean}
  */
 var isUsernameValid = email => {

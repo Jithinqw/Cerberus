@@ -19,9 +19,13 @@ var PANCardValidator = require("./fns/isPANCard");
 var unique = require("./fns/unique");
 var validateEtherHash = require('./fns/isEthereumHash');
 var isValidPort = require('./fns/isValidPort');
-
-const version = "0.7.0";
-const author = "Jithin Zacharia";
+var isUUID = require('./fns/isUUID');
+var isIPAddress = require('./fns/isIPAddress');
+var isDivisible = require('./fns/isDivisible');
+var isBase64 = require('./fns/isBase64');
+var colorValidator = require('./fns/colorValidator');
+const VERSION = "0.7.0";
+const AUTHOR = "Jithin Zacharia";
 
 const cerebreus={
     isEmailValid: isEmail.isEmailValid,
@@ -43,15 +47,16 @@ const cerebreus={
     isIFSCValid: bankCode.isIFSCode,
     isValidPort: isValidPort.isValidPort,
     getBankCode: bankCode.getBankCode,
-    getBranchCode: bankCode.getBranchCode
-};
-
-const about = {
-    version: version,
-    author: author
+    getBranchCode: bankCode.getBranchCode,
+    isUUID: isUUID,
+    isIPAddress: isIPAddress,
+    isDivisible: isDivisible,
+    isBase64: isBase64,
+    colorValidator: colorValidator,
+    version: VERSION,
+    author: AUTHOR
 };
 
 module.exports = {
-    cerebreus,
-    about
+    cerebreus
 };
