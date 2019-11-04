@@ -8,17 +8,17 @@ var assertString = require('../lib/isString')
  * @param {string} email
  * @param {string} domainName
  */
-exports.normalizeEmail = (email, domainName) => {
+exports.normalizeEmail = (email, domainName='gmail') => {
     assertString.isString(email)
     if (emailValidation.emailValidator(email) === false) {
-        return false
+        return false;
     } else {
-        var nameMatch = email.split('@')
+        var nameMatch = email.split('@');
         for (let i = 0; i <= normEmail[domainName].length; i++) {
             if (nameMatch[1] == normEmail[domainName][i]) {
-                return true
+                return true;
             } else {
-                return false
+                return false;
             }
         }
     }
@@ -31,11 +31,11 @@ exports.normalizeEmail = (email, domainName) => {
  * @returns {String | null}
  */
 exports.getUsername = email => {
-    assertString.isString(email)
+    assertString.isString(email);
     if (emailValidation.emailValidator(email) === false) {
-        return null
+        return null;
     } else {
-        var name = email.split('@')
-        return name[0] ? name[0] : null
+        var name = email.split('@');
+        return name[0] ? name[0] : null;
     }
 }

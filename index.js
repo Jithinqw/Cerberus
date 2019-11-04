@@ -23,8 +23,13 @@ var isUUID = require('./fns/isUUID');
 var isIPAddress = require('./fns/isIPAddress');
 var isDivisible = require('./fns/isDivisible');
 var isBase64 = require('./fns/isBase64');
+var isMACAddress = require('./fns/isMACAddress');
 var colorValidator = require('./fns/colorValidator');
 var isVehiclePlateValid = require('./fns/isVehicleNumber');
+var isIMEINumber = require('./fns/isIMEINumber');
+var isMagnetURI = require('./fns/isMagnetURI');
+var isOctal = require('./fns/isOctal');
+var isMD5 = require('./fns/isMD5');
 
 const VERSION = "0.7.0";
 const AUTHOR = "Jithin Zacharia";
@@ -50,12 +55,17 @@ const cerebreus={
     isValidPort: isValidPort.isValidPort,
     getBankCode: bankCode.getBankCode,
     getBranchCode: bankCode.getBranchCode,
-    isUUID: isUUID,
-    isIPAddress: isIPAddress,
-    isDivisible: isDivisible,
-    isBase64: isBase64,
-    isVehiclePlateValid: isVehiclePlateValid,
-    colorValidator: colorValidator,
+    isUUID: isUUID.isUUID,
+    isIMEINumber: isIMEINumber.isIMEINumber,
+    isIPAddress: isIPAddress.isIPAddress,
+    isDivisible: isDivisible.isDivisible,
+    isMACAddress: isMACAddress.isMACAddress,
+    isBase64: isBase64.isBase64,
+    isMD5: isMD5.isMD5,
+    isVehiclePlateValid: isVehiclePlateValid.isVehiclePlateValid,
+    colorValidator: colorValidator.isColorValid,
+    isMagnetURI: isMagnetURI.isMagnetURI,
+    isOctal: isOctal.isOctal,
     version: VERSION,
     author: AUTHOR
 };
