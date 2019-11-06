@@ -5,7 +5,7 @@
 ![GitHub](https://img.shields.io/github/license/Jithinqw/cerberus)
 ![npm collaborators](https://img.shields.io/npm/collaborators/cerberus-validator)
 
-Desi Javascript utils and validations made easy.
+Javascript validations made easy.
 
 ## Vision
 
