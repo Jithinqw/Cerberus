@@ -31,7 +31,7 @@ var isMagnetURI = require('./fns/isMagnetURI');
 var isOctal = require('./fns/isOctal');
 var isMD5 = require('./fns/isMD5');
 
-const VERSION = "0.7.0";
+const VERSION = "0.8.0";
 const AUTHOR = "Jithin Zacharia";
 
 const cerebreus={
