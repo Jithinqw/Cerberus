@@ -4,7 +4,8 @@
   "description": "Common validations for nodejs",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha"
+    "test": "nyc mocha",
+    "coverage": "nyc report --reporter=json && codecov -f coverage/coverage-final.json"
   },
   "repository": {
     "type": "git",
