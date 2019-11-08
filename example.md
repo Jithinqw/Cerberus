@@ -73,6 +73,20 @@
     cerebreus.isBase64("madness is like gravity..."); // => false
 ```
 
+`isBase32` returns a `bool` value.
+```javascript
+    var cerebreus = require("cerebreus-validator");
+    cerebreus.isBase32("AJU3JX7ZIA54EZQ="); // => true
+    cerebreus.isBase32("madness is like gravity..."); // => false
+```
+
+`isAscii` returns a `bool` value.
+```javascript
+    var cerebreus = require("cerebreus-validator");
+    cerebreus.isAscii("0003"); // => true
+    cerebreus.isAscii(""); // => false
+```
+
 `isMD5` returns `bool` value.
 ```javascript
     var cerebreus = require("cerebreus-validator");
@@ -109,11 +123,13 @@
 ## Bank
 
 `CVVValidator` returns `bool` value.
+Pass in length of `CVV number` as option.
 
 ```javascript
     var cerebreus = require("cerebreus-validator");
-    cerebreus.isCVVValid("344"); // => true
-    cerebreus.isCVVValid("34"); // => false
+    cerebreus.isCVVValid("344", 3); // => true
+    cerebreus.isCVVValid("3444", 4); // => true
+    cerebreus.isCVVValid("34", 4); // => false
 ```
 
 `isCreditCardNumber` returns a `bool` value.

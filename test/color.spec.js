@@ -3,12 +3,12 @@ var colorValidator = require('../fns/colorValidator');
 
 describe('Unit test for RGB color validator', () => {
     it('This function should return true on correct rgb string', () => {
-        let validRGB = colorValidator.isColorValid("rgb(252, 186, 3)", "reg")
+        let validRGB = colorValidator.isColorValid("rgb(252, 186, 3)", "rgb")
         assert.strictEqual(validRGB, true);
     });
 
     it('This function should return false on incorrect rgb string', () => {
-        let invalidRGB = colorValidator.isColorValid("rgb(2523, 1386, 3)", "reg")
+        let invalidRGB = colorValidator.isColorValid("rgb(2523, 1386, 3)", "rgb")
         assert.strictEqual(invalidRGB, false);
     });
 })
@@ -27,12 +27,12 @@ describe('Unit test for HEX color validator', () => {
 
 describe('Unit test for REGA color validator', () => {
     it('This function should return true on correct REGA string', () => {
-        let validREGA = colorValidator.isColorValid("rgba(255,0,0,0.2)", "rega")
+        let validREGA = colorValidator.isColorValid("rgba(255,0,0,0.2)", "rgba")
         assert.strictEqual(validREGA, true);
     });
 
     it('This function should return false on incorrect rgb string', () => {
-        let invalidREGA = colorValidator.isColorValid("rgba(255e,0,0,0.2)", "rega")
+        let invalidREGA = colorValidator.isColorValid("rgba(255e,0,0,0.2)", "rgba")
         assert.strictEqual(invalidREGA, false);
     });
 })

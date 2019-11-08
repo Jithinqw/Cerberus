@@ -23,6 +23,8 @@ var isUUID = require('./fns/isUUID');
 var isIPAddress = require('./fns/isIPAddress');
 var isDivisible = require('./fns/isDivisible');
 var isBase64 = require('./fns/isBase64');
+var isBase32 = require('./fns/isBase32');
+var isAscii = require('./fns/isAscii');
 var isMACAddress = require('./fns/isMACAddress');
 var colorValidator = require('./fns/colorValidator');
 var isVehiclePlateValid = require('./fns/isVehicleNumber');
@@ -61,6 +63,8 @@ const cerebreus={
     isDivisible: isDivisible.isDivisible,
     isMACAddress: isMACAddress.isMACAddress,
     isBase64: isBase64.isBase64,
+    isBase32: isBase32.isBase32,
+    isAscii: isAscii.isAscii,
     isMD5: isMD5.isMD5,
     isVehiclePlateValid: isVehiclePlateValid.isVehiclePlateValid,
     colorValidator: colorValidator.isColorValid,

@@ -7,11 +7,12 @@ var assertString = require('../lib/isString')
  * @returns {boolean}
  * @todo Find other ways to validate a CVV number.This method is not good.
  */
-exports.CVVValidator = cvvNumber => {
+exports.CVVValidator = (cvvNumber, size=3) => {
     assertString.isString(cvvNumber)
-    if (cvvNumber.length == 3) {
-        return true
-    } else {
-        return false
+    if(size == 3 && cvvNumber.length == 3){
+        return true;
+    }else if(size == 4 && cvvNumber.length == 4){
+        return true;
     }
+    return false;
 }
