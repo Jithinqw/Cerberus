@@ -20,6 +20,10 @@ Check `travis CI` build for test runs.
 
 Install this package using `npm i cerberus-validator`.
 
+The library can also be installed through bower
+
+`bower install cerberus-validator`
+
 ## Testing
 
 Cereberus uses `assert` library from `NodeJS` and use `mocha` for test runners.
