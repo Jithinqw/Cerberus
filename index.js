@@ -33,7 +33,7 @@ var isMagnetURI = require('./fns/isMagnetURI');
 var isOctal = require('./fns/isOctal');
 var isMD5 = require('./fns/isMD5');
 
-const VERSION = "0.10.0";
+const VERSION = "0.11.0";
 const AUTHOR = "Jithin Zacharia";
 
 const cerebreus={
@@ -74,6 +74,4 @@ const cerebreus={
     author: AUTHOR
 };
 
-module.exports = {
-    cerebreus
-};
+module.exports = cerebreus;

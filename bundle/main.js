@@ -1,4 +1,26 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+var assertString = require('../lib/isString');
+
+const COLOR_REG = {
+  hex: /^#(?:[A-Fa-f0-9]{3}){1,2}$/,
+  rgb: /^rgb[(](?:\s*0*(?:\d\d?(?:\.\d+)?(?:\s*%)?|\.\d+\s*%|100(?:\.0*)?\s*%|(?:1\d\d|2[0-4]\d|25[0-5])(?:\.\d+)?)\s*(?:,(?![)])|(?=[)]))){3}[)]$/,
+  rgba: /^^rgba[(](?:\s*0*(?:\d\d?(?:\.\d+)?(?:\s*%)?|\.\d+\s*%|100(?:\.0*)?\s*%|(?:1\d\d|2[0-4]\d|25[0-5])(?:\.\d+)?)\s*,){3}\s*0*(?:\.\d+|1(?:\.0*)?)\s*[)]$/,
+  hsl: /^hsl[(]\s*0*(?:[12]?\d{1,2}|3(?:[0-5]\d|60))\s*(?:\s*,\s*0*(?:\d\d?(?:\.\d+)?\s*%|\.\d+\s*%|100(?:\.0*)?\s*%)){2}\s*[)]$/,
+  hsla: /^hsla[(]\s*0*(?:[12]?\d{1,2}|3(?:[0-5]\d|60))\s*(?:\s*,\s*0*(?:\d\d?(?:\.\d+)?\s*%|\.\d+\s*%|100(?:\.0*)?\s*%)){2}\s*,\s*0*(?:\.\d+|1(?:\.0*)?)\s*[)]$/
+};
+
+/**
+ * @exports isColorValid
+ * @param {string} color
+ * @param {string} type
+ * @returns {boolean}
+*/
+exports.isColorValid = (color, type='hex') => {
+  assertString.isString(color);
+  const pattern = COLOR_REG[type];
+  return pattern && pattern.test(color);
+}
+},{"../lib/isString":32}],2:[function(require,module,exports){
 var normEmail = require('../lib/emailDomains.json')
 var emailValidation = require('./isEmail')
 var assertString = require('../lib/isString')
@@ -6,20 +28,20 @@ var assertString = require('../lib/isString')
 /**
  * @exports normalizeEmail
  * @desc Checks if the email is belonging to a particular domain or not.
- * @param {String} email
- * @param {String} domainName
+ * @param {string} email
+ * @param {string} domainName
  */
-exports.normalizeEmail = (email, domainName) => {
+exports.normalizeEmail = (email, domainName='gmail') => {
     assertString.isString(email)
     if (emailValidation.emailValidator(email) === false) {
-        return false
+        return false;
     } else {
-        var nameMatch = email.split('@')
+        var nameMatch = email.split('@');
         for (let i = 0; i <= normEmail[domainName].length; i++) {
             if (nameMatch[1] == normEmail[domainName][i]) {
-                return true
+                return true;
             } else {
-                return false
+                return false;
             }
         }
     }
@@ -32,22 +54,22 @@ exports.normalizeEmail = (email, domainName) => {
  * @returns {String | null}
  */
 exports.getUsername = email => {
-    assertString.isString(email)
+    assertString.isString(email);
     if (emailValidation.emailValidator(email) === false) {
-        return null
+        return null;
     } else {
-        var name = email.split('@')
-        return name[0] ? name[0] : null
+        var name = email.split('@');
+        return name[0] ? name[0] : null;
     }
 }
 
-},{"../lib/emailDomains.json":17,"../lib/isString":19,"./isEmail":6}],2:[function(require,module,exports){
+},{"../lib/emailDomains.json":30,"../lib/isString":32,"./isEmail":11}],3:[function(require,module,exports){
 var assertString = require('../lib/isString')
 
 /**
  * @exports isIFSCode
- * @param {String} code
- * @returns {Boolean}
+ * @param {string} code
+ * @returns {boolean}
  */
 var IFSCodeValidator = (exports.isIFSCode = code => {
     assertString.isString(code)
@@ -57,8 +79,8 @@ var IFSCodeValidator = (exports.isIFSCode = code => {
 
 /**
  * @exports getBankCode
- * @param { String } code
- * @returns {String}
+ * @param {string } code
+ * @returns {string}
  */
 exports.getBankCode = code => {
     assertString.isString(code)
@@ -71,8 +93,8 @@ exports.getBankCode = code => {
 
 /**
  * @exports getBranchCode
- * @param { String } code
- * @returns {String}
+ * @param { string } code
+ * @returns {string}
  */
 exports.getBranchCode = code => {
     assertString.isString(code)
@@ -83,34 +105,80 @@ exports.getBranchCode = code => {
     }
 }
 
-},{"../lib/isString":19}],3:[function(require,module,exports){
+},{"../lib/isString":32}],4:[function(require,module,exports){
+var assertString = require('../lib/isString');
+
+/**
+ * @exports isBase32
+ * @param {string} str
+ * @returns {boolean}
+ */
+exports.isAscii = str =>{
+    assertString.isString(str);
+    const ASCII_REG = /^[\x00-\x7F]+$/;
+    return ASCII_REG.test(str);
+}
+
+},{"../lib/isString":32}],5:[function(require,module,exports){
+var assertString = require('../lib/isString');
+
+/**
+ * @exports isBase32
+ * @param {string} str
+ * @returns {boolean}
+ */
+exports.isBase32 = str =>{
+    assertString.isString(str);
+    const BASE32_REG = /^[A-Z2-7]+=*$/;
+    if (str.length > 0 && str.length % 8 === 0 && BASE32_REG.test(str)) {
+        return true;
+    }
+    return false;
+}
+
+},{"../lib/isString":32}],6:[function(require,module,exports){
+var assertString = require('../lib/isString');
+
+/**
+* @exports isBase64
+* @param {string} str
+* @returns {boolean}
+*/
+exports.isBase64 = str =>{
+  assertString.isString(str);
+  const BASE64_REGEX = /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
+  return (BASE64_REGEX.test(str));
+}
+
+},{"../lib/isString":32}],7:[function(require,module,exports){
 var assertString = require('../lib/isString')
 
 /**
  * @exports validate CVV number
  * @desc validate cvv number for cards.
- * @param {String} cvvNumber
- * @returns {Boolean}
+ * @param {string} cvvNumber
+ * @returns {boolean}
  * @todo Find other ways to validate a CVV number.This method is not good.
  */
-exports.CVVValidator = cvvNumber => {
+exports.CVVValidator = (cvvNumber, size=3) => {
     assertString.isString(cvvNumber)
-    if (cvvNumber.length == 3) {
-        return true
-    } else {
-        return false
+    if(size == 3 && cvvNumber.length == 3){
+        return true;
+    }else if(size == 4 && cvvNumber.length == 4){
+        return true;
     }
+    return false;
 }
 
-},{"../lib/isString":19}],4:[function(require,module,exports){
+},{"../lib/isString":32}],8:[function(require,module,exports){
 var assertString = require('../lib/isString')
 var luhnCheck = require('../lib/luhnCheck')
 
 /**
  * @exports isCreditCardNumber
  * @desc Checks if the credit card number is valid or not.
- * @param { String } creditCardNumber
- * @return { Boolean }
+ * @param { string } creditCardNumber
+ * @return { boolean }
  */
 exports.isCreditCardNumber = creditCardNumber => {
     return luhnCheck.luhnCheck(creditCardNumber)
@@ -119,8 +187,8 @@ exports.isCreditCardNumber = creditCardNumber => {
 /**
  * @exports detectCardType
  * @desc detects card type
- * @param { String } cardNumber
- * @returns { String }
+ * @param { string } cardNumber
+ * @returns {string }
  */
 exports.detectCardType = cardNumber => {
     assertString.isString(cardNumber)
@@ -128,17 +196,9 @@ exports.detectCardType = cardNumber => {
         var re = {
             electron: /^(4026|417500|4405|4508|4844|4913|4917)\d+$/,
             maestro: /^(5[06789]|6)[0-9]{0,}$/,
-            dankort: /^(5019)\d+$/,
-            interpayment: /^(636)\d+$/,
             unionpay: /^(62[0-9]{14,17})$/,
             visa: /^(?:4[0-9]{12}(?:[0-9]{3})?)$/,
-            bcglobal: /^(6541|6556)[0-9]{12}$/,
             carteblanchecard: /^389[0-9]{11}$/,
-            instapaycard: /^63[7-9][0-9]{13}$/,
-            koreanlocalCard:/^9[0-9]{15}$/,
-            lasercard: /^(6304|6706|6709|6771)[0-9]{12,15}$/,
-            solocard: /^(6334|6767)[0-9]{12}|(6334|6767)[0-9]{14}|(6334|6767)[0-9]{15}$/,
-            switchcard: /^(4903|4905|4911|4936|6333|6759)[0-9]{12}|(4903|4905|4911|4936|6333|6759)[0-9]{14}|(4903|4905|4911|4936|6333|6759)[0-9]{15}|564182[0-9]{10}|564182[0-9]{12}|564182[0-9]{13}|633110[0-9]{10}|633110[0-9]{12}|633110[0-9]{13}$/,
             mastercard: /^5[1-5][0-9]{14}$/,
             americanexpress: /^3[47][0-9]{13}$/,
             dinersclub: /^3(?:0[0-5]|[68][0-9])[0-9]{11}$/,
@@ -157,13 +217,13 @@ exports.detectCardType = cardNumber => {
     }
 }
 
-},{"../lib/isString":19,"../lib/luhnCheck":20}],5:[function(require,module,exports){
+},{"../lib/isString":32,"../lib/luhnCheck":33}],9:[function(require,module,exports){
 /**
  * @exports isDate
  * @desc This function only recognize ISO format defined by ECMA Script ECMA-256
  * https://www.ecma-international.org/ecma-262/6.0/#sec-date.parse
- * @param {String} dateValue
- * @returns {Boolean}
+ * @param {string} dateValue
+ * @returns {boolean}
  */
 exports.isDate = dateValue => {
     let validateDate = Date.parse(new Date(dateValue))
@@ -174,15 +234,29 @@ exports.isDate = dateValue => {
     }
 }
 
-},{}],6:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
+var assertString = require('../lib/isString');
+
+/**
+* @function isDivisible
+* @param {string} str
+* @param {number} num
+* @returns {boolean}  
+*/
+exports.isDivisible = (str, num)=>{
+  assertString(str);
+  return parseFloat(str) % parseInt(num, 10) === 0;
+}
+
+},{"../lib/isString":32}],11:[function(require,module,exports){
 var splitUsername = require('../fns/emailNormalizer')
 var restrictedDomains = require('../lib/reservedDomains.json')
 var assertString = require('../lib/isString')
 
 /**
  * @function isUsernameValid
- * @param {*} email
- * @returns {Boolean}
+ * @param {string} email
+ * @returns {boolean}
  */
 var isUsernameValid = email => {
     assertString.isString(email)
@@ -196,7 +270,8 @@ var isUsernameValid = email => {
 
 /**
  * @function validateEmail
- * @param {*} email
+ * @param {string} email
+ * @returns {boolean}
  */
 var emailChecker = (exports.emailValidator = email => {
     assertString.isString(email)
@@ -207,7 +282,7 @@ var emailChecker = (exports.emailValidator = email => {
 /**
  * @function restrictedDomainCheck
  * @param {*} email
- * @returns {Boolean}
+ * @returns {boolean}
  */
 var restrictedDomainCheck = email => {
     assertString.isString(email)
@@ -227,8 +302,8 @@ var restrictedDomainCheck = email => {
  * @exports isEmailValid
  * @desc Checks if the email is valid accoriding to the default or options config.
  * Checking is done using spec defined in RFC 5321.
- * @param {String} email
- * @return {Boolean}
+ * @param {string} email
+ * @return {boolean}
  */
 exports.isEmailValid = email => {
     assertString.isString(email)
@@ -243,62 +318,139 @@ exports.isEmailValid = email => {
     }
 }
 
-},{"../fns/emailNormalizer":1,"../lib/isString":19,"../lib/reservedDomains.json":21}],7:[function(require,module,exports){
+},{"../fns/emailNormalizer":2,"../lib/isString":32,"../lib/reservedDomains.json":34}],12:[function(require,module,exports){
 var assertString = require('../lib/isString');
 
 /**
  * @exports isEthereumHash
- * @param {String} hash
- * @returns {Boolean}
+ * @param {string} hash
+ * @returns {boolean}
  */
 exports.isEthereumHash = hash =>{
     assertString.isString(hash);
     const REGEX = /^0x([A-Fa-f0-9]{64})$/
     return REGEX.test(hash);
 }
-},{"../lib/isString":19}],8:[function(require,module,exports){
+},{"../lib/isString":32}],13:[function(require,module,exports){
+var assertString = require('../lib/isString');
+var luhnAlgo = require('../lib/luhnCheck');
+
+/**
+ * @exports isIMEINumber
+ * @param {string} imeiNumber
+ * @returns {boolean}
+ */
+exports.isIMEINumber = imeiNumber => {
+    assertString.isString(imeiNumber);
+    return luhnAlgo.luhnCheck(imeiNumber);
+}
+},{"../lib/isString":32,"../lib/luhnCheck":33}],14:[function(require,module,exports){
+var assertString = require('../lib/isString');
+
+/**
+ * @exports isIPAddress
+ * @param {string} address
+ * @returns {boolean}
+ */
+exports.isIPAddress = address=> {
+  assertString.isString(address);
+  const IP_REG = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
+  return IP_REG.test(address)
+}
+
+},{"../lib/isString":32}],15:[function(require,module,exports){
 var assertString = require('../lib/isString')
 
 /**
  * @exports isJWT
- * @param {String} str
- * @returns {Boolean}
+ * @param {string} str
+ * @returns {boolean}
  */
 exports.isJWT = str => {
     assertString.isString(str);
-    const jwt = /^([A-Za-z0-9\-_~+\/]+[=]{0,2})\.([A-Za-z0-9\-_~+\/]+[=]{0,2})(?:\.([A-Za-z0-9\-_~+\/]+[=]{0,2}))?$/
-    return jwt.test(str);
+    const JWT_REG = /^([A-Za-z0-9\-_~+\/]+[=]{0,2})\.([A-Za-z0-9\-_~+\/]+[=]{0,2})(?:\.([A-Za-z0-9\-_~+\/]+[=]{0,2}))?$/
+    return JWT_REG.test(str);
 }
 
-},{"../lib/isString":19}],9:[function(require,module,exports){
+},{"../lib/isString":32}],16:[function(require,module,exports){
+var assertString = require('../lib/isString');
+
+/**
+ * @exports isMACAddress
+ * @param {string} address
+ * @returns {boolean}
+ */
+exports.isMACAddress = address => {
+    assertString.isString(address);
+    const MAC_REG = /^(([A-Fa-f0-9]{2}[:]){5}[A-Fa-f0-9]{2}[,]?)+$/;
+    return MAC_REG.test(address);
+}
+},{"../lib/isString":32}],17:[function(require,module,exports){
+var assertString = require('../lib/isString');
+
+/**
+ * @exports isMD5
+ * @param {string} str
+ * @returns {boolean}
+ */
+
+exports.isMD5 = str => {
+    assertString.isString(str);
+    const MD5_REG = /^[a-f0-9]{32}$/;
+    return MD5_REG.test(str);
+}
+},{"../lib/isString":32}],18:[function(require,module,exports){
+var assertString = require('../lib/isString');
+
+const magnetURI = /magnet:\?xt=urn:[a-z0-9]+:[a-z0-9]{32}/i;
+
+/**
+ * @exports isMagnetURI 
+ * @param {string} isMagnetURI 
+ * @returns {boolean}
+ */
+exports.isMagnetURI = url =>{
+  assertString.isString(url);
+  return magnetURI.test(url.trim());
+}
+},{"../lib/isString":32}],19:[function(require,module,exports){
 var convertToHexa = require('../lib/isHexaDecimal')
 var assertString = require('../lib/isString')
 
 /**
  * @exports isMongoId
- * @param {String} id
- * @returns {Boolean}
+ * @param {string} id
+ * @returns {boolean}
  */
 exports.isMongoId = id => {
     assertString.isString(id);
     return convertToHexa.isHexaDecimal(id) && id.length === 24
 }
 
-},{"../lib/isHexaDecimal":18,"../lib/isString":19}],10:[function(require,module,exports){
+},{"../lib/isHexaDecimal":31,"../lib/isString":32}],20:[function(require,module,exports){
+var assertString = require('../lib/isString');
+
+const OCTAL_REG = /^(0o)?[0-7]+$/i;
+
+exports.isOctal = str => {
+  assertString.isString(str);
+  return OCTAL_REG.test(str);
+}
+},{"../lib/isString":32}],21:[function(require,module,exports){
 var assertString = require('../lib/isString')
 
 /**
  * @exports isPanCard
- * @param {String} panNumber
- * @returns {Boolean}
+ * @param {string} panNumber
+ * @returns {boolean}
  */
 exports.isPanCard = panNumber => {
     assertString.isString(panNumber)
-    let regExPan = /^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/
-    return regExPan.test(panNumber)
+    const PAN_REG = /^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/
+    return PAN_REG.test(panNumber)
 }
 
-},{"../lib/isString":19}],11:[function(require,module,exports){
+},{"../lib/isString":32}],22:[function(require,module,exports){
 /**
  * @fileoverview finds if a string is a phone number or not.
  * @desc Follows The international public telecommunication numbering plan (IPTNP)
@@ -384,9 +536,9 @@ const phones = {
 
 /**
  * @exports isPhoneNumber
- * @param {String} phoneNumber
- * @param {String} countryCode
- * @returns {Boolean}
+ * @param {string} phoneNumber
+ * @param {string} countryCode
+ * @returns {boolean}
  */
 exports.isPhoneNumber = (phoneNumber, countryCode) => {
     assertString.isString(phoneNumber)
@@ -395,7 +547,7 @@ exports.isPhoneNumber = (phoneNumber, countryCode) => {
     }
 }
 
-},{"../lib/isString":19}],12:[function(require,module,exports){
+},{"../lib/isString":32}],23:[function(require,module,exports){
 var assertString = require('../lib/isString')
 
 const threeDigit = /^\d{3}$/;
@@ -429,6 +581,7 @@ const postalPattern = {
     IE: /^[A-z]\d[\d|w]\s\w{4}$/i,
     IL: fiveDigit,
     IN: /^((?!10|29|35|54|55|65|66|86|87|88|89)[1-9][0-9]{5})$/,
+    IR: /^\b(?!(\d)\1{3})[13-9]{4}[1346-9][013-9]{5}\b$/,
     IS: threeDigit,
     IT: fiveDigit,
     JP: /^\d{3}\-\d{4}$/,
@@ -461,9 +614,9 @@ const postalPattern = {
 
 /**
  * @exports isPostalCodeValid
- * @param {String} postalCode
- * @param {String} countryCode
- * @returns {Boolean}
+ * @param {string} postalCode
+ * @param {string} countryCode
+ * @returns {boolean}
  */
 exports.isPostalCodeValid = (postalCode, countryCode) => {
     assertString.isString(postalCode)
@@ -474,14 +627,14 @@ exports.isPostalCodeValid = (postalCode, countryCode) => {
     }
 }
 
-},{"../lib/isString":19}],13:[function(require,module,exports){
+},{"../lib/isString":32}],24:[function(require,module,exports){
 var assertString = require('../lib/isString')
 
 /**
  * @exports isStringJSON
  * @desc checks if the string is a JSON or not.
- * @param {String} string
- * @returns {Boolean}
+ * @param {string} string
+ * @returns {boolean}
  */
 exports.isStringJSON = string => {
     assertString.isString(string)
@@ -496,23 +649,62 @@ exports.isStringJSON = string => {
     }
 }
 
-},{"../lib/isString":19}],14:[function(require,module,exports){
+},{"../lib/isString":32}],25:[function(require,module,exports){
+var assertString = require('../lib/isString')
+
+const uuid = {
+  3: /^[0-9A-F]{8}-[0-9A-F]{4}-3[0-9A-F]{3}-[0-9A-F]{4}-[0-9A-F]{12}$/i,
+  4: /^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i,
+  5: /^[0-9A-F]{8}-[0-9A-F]{4}-5[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i,
+  all: /^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$/i,
+};
+
+/**
+ * @function isUsernameValid
+ * @param {string} email
+ * @returns {boolean}
+*/
+exports.isUUID = (str, version = 'all') =>{
+  assertString.isString(str);
+  const pattern = uuid[version];
+  return pattern && pattern.test(str);
+}
+
+},{"../lib/isString":32}],26:[function(require,module,exports){
 var assertString = require('../lib/isString');
 
 /**
  * @exports isValidPort 
- * @param {String} port
- * @returns {Boolean}
+ * @param {string} port
+ * @returns {boolean}
  */
 exports.isValidPort = port =>{
     assertString.isString(port);
     if(parseInt(port) > 0 && parseInt(port) < 65535){
-        const REGEX =  /^([0-9]{1,4}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])$/;
+        const REGEX = /^([0-9]{1,4}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])$/;
         return REGEX.test(port);
     }
     return false;
 }
-},{"../lib/isString":19}],15:[function(require,module,exports){
+},{"../lib/isString":32}],27:[function(require,module,exports){
+var assertString = require('../lib/isString');
+
+const PLATE_REG = {
+    IND: /^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$/
+};
+
+/**
+ * @exports isVehiclePlateValid
+ * @param {string} number
+ * @param {string} countryCode 
+ * @param {boolean}
+ */
+exports.isVehiclePlateValid = (number, countryCode='IND') => {
+    assertString.isString(number);
+    const pattern = PLATE_REG[countryCode];
+    return pattern && pattern.test(number)
+}
+},{"../lib/isString":32}],28:[function(require,module,exports){
 var assertIter = require('../lib/typeChecker')
 
 /**
@@ -530,31 +722,44 @@ exports.unique = iter => {
     return filerArry
 }
 
-},{"../lib/typeChecker":22}],16:[function(require,module,exports){
+},{"../lib/typeChecker":35}],29:[function(require,module,exports){
 /**
  * @fileoverview Entry point for Cerberus.
  * @author Jithin Zacharia
  */
 
-var isEmail = require("../fns/isEmail");
-var isDate = require("../fns/isDate");
-var emailNormalizer = require("../fns/emailNormalizer");
-var creditCard = require("../fns/isCreditCard");
-var cvvNumber = require("../fns/isCVVNumber");
-var JWTValidator = require("../fns/isJWTValid");
-var mongoValidator = require("../fns/isMongoId");
-var phoneNumberValidator = require("../fns/isPhoneNumber");
-var postalCodeValidator = require("../fns/isPostalCode");
-var jsonValidator = require("../fns/isStringJSON");
-var bankCode = require("../fns/ifscCode");
-var luhnCheck = require("../lib/luhnCheck");
-var PANCardValidator = require("../fns/isPANCard");
-var unique = require("../fns/unique");
-var validateEtherHash = require('../fns/isEthereumHash');
-var isValidPort = require('../fns/isValidPort');
+var isEmail = require("./fns/isEmail");
+var isDate = require("./fns/isDate");
+var emailNormalizer = require("./fns/emailNormalizer");
+var creditCard = require("./fns/isCreditCard");
+var cvvNumber = require("./fns/isCVVNumber");
+var JWTValidator = require("./fns/isJWTValid");
+var mongoValidator = require("./fns/isMongoId");
+var phoneNumberValidator = require("./fns/isPhoneNumber");
+var postalCodeValidator = require("./fns/isPostalCode");
+var jsonValidator = require("./fns/isStringJSON");
+var bankCode = require("./fns/ifscCode");
+var luhnCheck = require("./lib/luhnCheck");
+var PANCardValidator = require("./fns/isPANCard");
+var unique = require("./fns/unique");
+var validateEtherHash = require('./fns/isEthereumHash');
+var isValidPort = require('./fns/isValidPort');
+var isUUID = require('./fns/isUUID');
+var isIPAddress = require('./fns/isIPAddress');
+var isDivisible = require('./fns/isDivisible');
+var isBase64 = require('./fns/isBase64');
+var isBase32 = require('./fns/isBase32');
+var isAscii = require('./fns/isAscii');
+var isMACAddress = require('./fns/isMACAddress');
+var colorValidator = require('./fns/colorValidator');
+var isVehiclePlateValid = require('./fns/isVehicleNumber');
+var isIMEINumber = require('./fns/isIMEINumber');
+var isMagnetURI = require('./fns/isMagnetURI');
+var isOctal = require('./fns/isOctal');
+var isMD5 = require('./fns/isMD5');
 
-const version = "0.5.0";
-const author = "Jithin Zacharia";
+const VERSION = "0.10.0";
+const AUTHOR = "Jithin Zacharia";
 
 const cerebreus={
     isEmailValid: isEmail.isEmailValid,
@@ -564,7 +769,7 @@ const cerebreus={
     isJWTValid: JWTValidator.isJWT,
     isDate: isDate.isDate,
     luhnCheck: luhnCheck.luhnCheck,
-    panCardValidaror: PANCardValidator.isPanCard,
+    panCardValidator: PANCardValidator.isPanCard,
     getUnique: unique.unique,
     isMongoId: mongoValidator.isMongoId,
     isPhoneNumberValid: phoneNumberValidator.isPhoneNumber,
@@ -576,19 +781,26 @@ const cerebreus={
     isIFSCValid: bankCode.isIFSCode,
     isValidPort: isValidPort.isValidPort,
     getBankCode: bankCode.getBankCode,
-    getBranchCode: bankCode.getBranchCode
+    getBranchCode: bankCode.getBranchCode,
+    isUUID: isUUID.isUUID,
+    isIMEINumber: isIMEINumber.isIMEINumber,
+    isIPAddress: isIPAddress.isIPAddress,
+    isDivisible: isDivisible.isDivisible,
+    isMACAddress: isMACAddress.isMACAddress,
+    isBase64: isBase64.isBase64,
+    isBase32: isBase32.isBase32,
+    isAscii: isAscii.isAscii,
+    isMD5: isMD5.isMD5,
+    isVehiclePlateValid: isVehiclePlateValid.isVehiclePlateValid,
+    colorValidator: colorValidator.isColorValid,
+    isMagnetURI: isMagnetURI.isMagnetURI,
+    isOctal: isOctal.isOctal,
+    version: VERSION,
+    author: AUTHOR
 };
 
-const about = {
-    version: version,
-    author: author
-};
-
-module.exports = {
-    cerebreus,
-    about
-};
-},{"./fns/emailNormalizer":1,"./fns/ifscCode":2,"./fns/isCVVNumber":3,"./fns/isCreditCard":4,"./fns/isDate":5,"./fns/isEmail":6,"./fns/isEthereumHash":7,"./fns/isJWTValid":8,"./fns/isMongoId":9,"./fns/isPANCard":10,"./fns/isPhoneNumber":11,"./fns/isPostalCode":12,"./fns/isStringJSON":13,"./fns/isValidPort":14,"./fns/unique":15,"./lib/luhnCheck":20}],17:[function(require,module,exports){
+module.exports = cerebreus;
+},{"./fns/colorValidator":1,"./fns/emailNormalizer":2,"./fns/ifscCode":3,"./fns/isAscii":4,"./fns/isBase32":5,"./fns/isBase64":6,"./fns/isCVVNumber":7,"./fns/isCreditCard":8,"./fns/isDate":9,"./fns/isDivisible":10,"./fns/isEmail":11,"./fns/isEthereumHash":12,"./fns/isIMEINumber":13,"./fns/isIPAddress":14,"./fns/isJWTValid":15,"./fns/isMACAddress":16,"./fns/isMD5":17,"./fns/isMagnetURI":18,"./fns/isMongoId":19,"./fns/isOctal":20,"./fns/isPANCard":21,"./fns/isPhoneNumber":22,"./fns/isPostalCode":23,"./fns/isStringJSON":24,"./fns/isUUID":25,"./fns/isValidPort":26,"./fns/isVehicleNumber":27,"./fns/unique":28,"./lib/luhnCheck":33}],30:[function(require,module,exports){
 module.exports={
 	"outlook": [
 		"hotmail.at",
@@ -706,7 +918,7 @@ module.exports={
         "me.com"
     ]
 }
-},{}],18:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 var assertString = require("./isString");
 
 /**
@@ -719,7 +931,7 @@ exports.isHexaDecimal = value=> {
     const hexaReg = /^[0-9A-F]+$/i;
     return hexaReg.test(value);
 }
-},{"./isString":19}],19:[function(require,module,exports){
+},{"./isString":32}],32:[function(require,module,exports){
 /**
  * @exports isString
  * @param {String} value 
@@ -732,7 +944,7 @@ exports.isString = value=> {
         throw new Error("Invalid type");
     }
 }
-},{}],20:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 var assertString = require("../lib/isString");
 
 /**
@@ -762,7 +974,7 @@ exports.luhnCheck = (cardNum)=>{
 
   	return (nCheck % 10) === 0;
 }
-},{"../lib/isString":19}],21:[function(require,module,exports){
+},{"../lib/isString":32}],34:[function(require,module,exports){
 module.exports={
     "domains": [
         ".example",
@@ -772,7 +984,7 @@ module.exports={
         "example.org"
     ]
 }
-},{}],22:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 /**
  * @exports isFunction
  * @param {Object} fn
@@ -797,4 +1009,4 @@ exports.isIterable = iter=>{
     }
     return typeof iter[Symbol.iterator] === "function";
 }
-},{}]},{},[16]);
+},{}]},{},[29]);
