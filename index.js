@@ -35,6 +35,7 @@ var isMD5 = require("./fns/isMD5");
 
 const VERSION = require("./package.json").version;
 const AUTHOR = require("./package.json").author;
+const HOMEPAGE = require("./package.json").homepage;
 
 const cerebreus={
     isEmailValid: isEmail.isEmailValid,
@@ -71,7 +72,8 @@ const cerebreus={
     isMagnetURI: isMagnetURI.isMagnetURI,
     isOctal: isOctal.isOctal,
     version: VERSION,
-    author: AUTHOR
+    author: AUTHOR,
+    homepage: HOMEPAGE
 };
 
 module.exports = cerebreus;
