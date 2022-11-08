@@ -23,7 +23,10 @@ const isNumber = (value: any):boolean => {
  */
 const isObject = (value: any): boolean => {
     const type = typeof value;
-    return value !== null && (type === 'object' || type === 'function')
+    return (
+        value !== null && 
+        (type === 'object' || type === 'function')
+    );
 }
 
 /**
@@ -43,7 +46,10 @@ const isString = (value: any): boolean => {
  * @returns {boolean}
  */
 const isEqual = (value: any, otherValue: any):boolean => {
-    return value === otherValue || (value !== value && otherValue !== otherValue);
+    return (
+        value === otherValue || 
+        (value !== value && otherValue !== otherValue)
+    );
 }
 
 /**
@@ -51,7 +57,7 @@ const isEqual = (value: any, otherValue: any):boolean => {
  * @param {any} iter
  * @returns {boolean}
  */
- exports.isIterable = (iter: any):boolean =>{
+const isIterable = (iter: any):boolean =>{
     let iterTruth: boolean = false;
     iterTruth = typeof iter[Symbol.iterator] === "function";
     return iterTruth;
@@ -63,6 +69,7 @@ const core = {
     isObject,
     isString,
     isEqual,
+    isIterable,
 }
 
 export default core;

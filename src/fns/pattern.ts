@@ -1,4 +1,5 @@
 import core from "../core";
+import PATTERNEXP from '../fns/data';
 
 /**
  * @function isJwtToken
@@ -15,7 +16,27 @@ const isJwtToken = (value: any):boolean => {
     return isJwt;
 }
 
-export default {
-    isJwtToken
+/**
+ * @function isUUID
+ * @description Check if UUID string,
+ * should work on all versions.
+ * @param {string} value 
+ * @param {string} version 
+ * @returns {boolean}
+ */
+const isUUID = (value: string, version: 'all'):boolean =>{
+    let isValidUUID: boolean = false;
+    if(value && core.isString(value)) {
+        const pattern = PATTERNEXP.PATTERNEXP.uuidExp[version];
+        isValidUUID = pattern && pattern.test(value);
+    }
+    return isValidUUID;
 }
+
+const pattern = {
+    isJwtToken,
+    isUUID,
+};
+
+export default pattern;
 
