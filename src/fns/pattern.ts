@@ -33,9 +33,17 @@ const isUUID = (value: string, version: 'all'):boolean =>{
     return isValidUUID;
 }
 
+const isColorValid = (color: string, type: 'hex'): boolean => {
+    let validColor:boolean = false;
+    const patternMatch = PATTERNEXP.PATTERNEXP.colors[type];
+    validColor = pattern && patternMatch.test(color);
+    return validColor;
+}
+
 const pattern = {
     isJwtToken,
     isUUID,
+    isColorValid,
 };
 
 export default pattern;

@@ -121,6 +121,8 @@ const EMAILDOMAINS = {
 };
 
 const PATTERNEXP = {
+    ifsc: /^(?=.*\d)(?=.*[0-9A-Z]).{11}$/,
+    panExp: /^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/,
     jwt: /^([A-Za-z0-9\-_~+\/]+[=]{0,2})\.([A-Za-z0-9\-_~+\/]+[=]{0,2})(?:\.([A-Za-z0-9\-_~+\/]+[=]{0,2}))?$/i,
     badHex: /^[-+]0x[0-9a-f]+$/i,
     hex: /\b[0-9A-F]{6}\b/gi,
@@ -131,6 +133,8 @@ const PATTERNEXP = {
     ethereumHash: /^0x([A-Fa-f0-9]{64})$/i,
     macExp: /^(([A-Fa-f0-9]{2}[:]){5}[A-Fa-f0-9]{2}[,]?)+$/i,
     md5Exp: /^[a-f0-9]{32}$/i,
+    mangetExp: /magnet:\?xt=urn:[a-z0-9]+:[a-z0-9]{32}/i,
+    portExp: /^([0-9]{1,4}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])$/, 
     urlExp: {
         magnet: /magnet:\?xt=urn:[a-z0-9]+:[a-z0-9]{32}/i
     },
@@ -227,6 +231,7 @@ const PATTERNEXP = {
 }
 
 export default {
-    PATTERNEXP, URLCONSTANTS, 
+    PATTERNEXP, 
+    URLCONSTANTS, 
     EMAILDOMAINS
 };
