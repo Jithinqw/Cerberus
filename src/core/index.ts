@@ -63,6 +63,30 @@ const isIterable = (iter: any):boolean =>{
     return iterTruth;
 }
 
+const contains = (arrayIter: Array<any>, item:any) => {
+    return arrayIter.indexOf(item) !== -1
+}
+
+const typeDef = (value: any) => {
+    // Null is special
+    if (value === null) return 'null';
+    const primitives = new Set([
+      'undefined',
+      'boolean',
+      'number',
+      'string',
+      'bigint',
+      'symbol'
+    ]);
+    const _type = typeof value;
+    if (_type === 'function') return _type;
+    if (primitives.has(_type)) return _type;
+    if (value instanceof String) return 'string';
+    if (value instanceof Error) return 'error';
+    if (Array.isArray(value)) return 'array';
+    return _type;
+};
+  
 const core = {
     isNull,
     isNumber,
@@ -70,6 +94,8 @@ const core = {
     isString,
     isEqual,
     isIterable,
+    contains,
+    typeDef
 }
 
 export default core;

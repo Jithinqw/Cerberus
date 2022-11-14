@@ -33,9 +33,15 @@ const sanitizeNumber = (x: any): typeof NaN | number => {
     return x;
 }
 
+const clamp = (value: number, range:Array<number>) => {
+    return Math.min(Math.max(value, range[0]), range[1]);
+};
+  
 const numberFns = {
     generateRandomNumber,
     sanitizeNumber,
+    clamp,
+    
 }
 
 export default numberFns;

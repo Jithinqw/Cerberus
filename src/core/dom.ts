@@ -29,3 +29,9 @@ const unescapeHtml = (str: string):string => {
       .replace(/&quot;/g, '"');
     return str;
 }
+
+/**
+ * @function getCwd
+ * @description get cwd for a process.
+ */
+const getCwd = process.cwd();
